@@ -35,4 +35,14 @@ public class EmployeeService {
         Employee employee = employeeRepo.findById(id).orElseThrow(() -> new ResourceNotFound("Employee not found"));
         employeeRepo.delete(employee);
     }
+
+    public void update(EmployeeDto employeeDto, Integer id) {
+        Employee employee = employeeRepo.findById(id).orElseThrow(() -> new ResourceNotFound("Employee not found"));
+        Employee employee1 = employeeMapper.toEmployee(employeeDto, employee);
+        try{
+            employeeRepo.save(employee1);
+        } catch (RuntimeException e) {
+            throw new RuntimeException(e.getMessage());
+        }
+    }
 }

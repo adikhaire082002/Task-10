@@ -16,6 +16,14 @@ public class EmployeeMapper {
         return employee;
     }
 
+    public Employee toEmployee(EmployeeDto employeeDto,Employee employee) {
+        employee.setName(employeeDto.getName());
+        employee.setPhone(employeeDto.getPhone());
+        employee.setEmail(employeeDto.getEmail());
+        employee.setAddress(employeeDto.getAddress());
+        return employee;
+    }
+
     public EmployeeDto toEmployeeDto(Employee employee) {
         EmployeeDto employeeDto = new EmployeeDto();
         employeeDto.setName(employee.getName());

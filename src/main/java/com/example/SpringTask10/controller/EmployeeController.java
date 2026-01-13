@@ -2,16 +2,13 @@ package com.example.SpringTask10.controller;
 
 
 import com.example.SpringTask10.DTO.EmployeeDto;
-import com.example.SpringTask10.DTO.ResponseDto;
 import com.example.SpringTask10.service.EmployeeService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Timestamp;
 
 @RestController
 @RequestMapping("employee")
@@ -30,6 +27,12 @@ public class EmployeeController {
     public ResponseEntity<?> getById(@RequestParam Integer id) {
         EmployeeDto employeeDto = employeeService.get(id);
         return new ResponseEntity<>(employeeDto,HttpStatus.FOUND);
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<?> update(@RequestBody @Valid EmployeeDto employeeDto, @RequestParam Integer id) {
+        employeeService.update(employeeDto,id);
+        return new ResponseEntity<>("Employee updated",HttpStatus.OK);
     }
 
     @DeleteMapping("/delete")

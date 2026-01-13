@@ -20,7 +20,7 @@ public class EmployeeDto {
 
     @NotBlank(message = "Phone should not be blank")
     @Pattern(regexp = "[6-9][0-9]{9}+",
-    message = "enter valid indian number")
+             message = "enter valid indian number")
     private String phone;
 
     @NotBlank(message = "address should not be empty or blank")
