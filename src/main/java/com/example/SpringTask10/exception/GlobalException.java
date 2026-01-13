@@ -41,7 +41,7 @@ public class GlobalException {
     @ExceptionHandler(ResourceNotFound.class)
     public ResponseEntity<ResponseDto> handlerResourceNotFound(ResourceNotFound e,HttpServletRequest request) {
         ResponseDto response = new ResponseDto(new Timestamp(System.currentTimeMillis()),HttpStatus.NOT_FOUND,e.getMessage(),request.getRequestURI());
-        return new ResponseEntity<>(response,HttpStatus.NOT_FOUND);
+        return new ResponseEntity<ResponseDto>(response,HttpStatus.NOT_FOUND);
     }
 
 //    private String getPath(Exception ex) {
